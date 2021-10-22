@@ -1,5 +1,63 @@
-$primary-color: #333;
+$background-primary-color: rgb(37, 37, 37);
+$background-secondary-color: rgb(95, 95, 95);
+$UI-primary-color: rgb(150, 0, 37);
+$UI-secondary-color: rgb(255, 0, 64);
 
 body {
-    background-color: $primary-color;
+    margin: 0;
+    background-color: $background-primary-color;
+    h1
+    {
+        color: white;
+        text-align: center;
+        font-family: "Ubuntu";
+    }
+    form
+    {
+        width: 70%;
+        margin: 0 auto;
+    }
+    button
+    {
+        transition-duration: 0.2s;
+        display: block;
+        align-items: center;
+        text-align: center;
+        width: 200px;
+        height: 50px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        background-color: $UI-primary-color;
+        color: whitesmoke;
+        font-size: 2em;
+        margin: 2% auto;
+        border-radius: 200px;
+        &:hover
+        {
+            background-color: $UI-secondary-color;
+            transition-duration: 0.2s;
+        }
+    }
+
+    input
+    {
+        width: 100%;
+        padding: 16px;
+        font-size: 1.5em;
+        margin: 0 auto;
+    }
+
+    .Answer
+    {
+        width: 50%;
+        margin: 0 auto;
+        h2
+        {
+            color: whitesmoke;
+        }
+        p
+        {
+            color: whitesmoke;
+            font: "Ubuntu";
+        }
+    }
 }
