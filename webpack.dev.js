@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: "./src/client/index.js",
-    
+
     mode: "development",
 
     module: {
@@ -18,6 +18,11 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin(
+            {
+                template: "./src/client/html/index.html",
+                filename: "./index.html"
+            }
+        ),
     ]
 }
