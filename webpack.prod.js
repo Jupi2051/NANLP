@@ -1,6 +1,7 @@
 module.exports = {
-    module = {
-        mode: "production",
+    entry: "./src/client/index.js",
+    mode: "production",
+    module: {
         rules: [
             {
                 test: "/\.js$/",

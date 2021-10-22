@@ -1,6 +1,13 @@
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    module = {
-        mode: "development",
+    entry: "./src/client/index.js",
+    
+    mode: "development",
+
+    module: {
         rules: [
             {
                 test: "/\.js$/",
@@ -8,5 +15,9 @@ module.exports = {
                 loader: "babel-loader"
             }
         ]
-    }
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin(),
+    ]
 }
