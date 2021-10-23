@@ -4,8 +4,9 @@ import FormatResponse from "./FormatResponse";
 const TitleContainer = document.getElementById("OutcomeTitle");
 const AnswerContainer = document.getElementById("AnswerContainer");
 const Form = document.getElementById("EvaluationForm");
+const TextContainer = document.getElementById("ArticleContainer");
 
-async function Evaluate(ArticleURL)
+async function Evaluate(ArticleData)
 {
     const response = await fetch("/Evaluate", 
     {
@@ -14,7 +15,7 @@ async function Evaluate(ArticleURL)
         headers: {
             "Content-type": "application/json"
         },
-        body: JSON.stringify({article: ArticleURL})
+        body: JSON.stringify({article: ArticleData})
     });
     return response;
 }
@@ -26,7 +27,7 @@ async function OnEvaluate(event)
     event.preventDefault();
     let result;
     try {
-        result = await (await Evaluate(this[0].value)).json();
+        result = await (await Evaluate(TextContainer.value)).json();
     } catch {
         TitleContainer.textContent = "Error while trying to request data.";
         AnswerContainer.innerHTML = "";
@@ -44,4 +45,7 @@ async function OnEvaluate(event)
     }
 }
 
-Form.onsubmit = OnEvaluate;
+export {
+    Evaluate,
+    OnEvaluate,
+}

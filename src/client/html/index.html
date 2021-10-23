@@ -13,8 +13,8 @@
         </header>
         <main>
             <form id="EvaluationForm">
-                <textarea placeholder="Article Contents"></textarea>
-                <button type="submit">Evaluate</button>
+                <textarea placeholder="Article Contents" id="ArticleContainer"></textarea>
+                <button type="submit" onclick="Client.OnEvaluate(event)">Evaluate</button>
             </form>
             <div class="Answer">
                 <h2 id="OutcomeTitle">
