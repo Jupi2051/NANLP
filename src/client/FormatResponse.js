@@ -14,4 +14,4 @@ export default function FormatResponse(result)
     Impression: ${PostivityValues[result.score_tag]}`;
 }
 
-module.exports = FormatResponse;
+module.exports = FormatResponse

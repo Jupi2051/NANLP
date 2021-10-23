@@ -1,5 +1,5 @@
 import "./styles/index.scss";
-import "./FormatResponse";
+import FormatResponse from "./FormatResponse";
 
 const TitleContainer = document.getElementById("OutcomeTitle");
 const AnswerContainer = document.getElementById("AnswerContainer");
