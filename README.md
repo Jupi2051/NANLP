@@ -13,4 +13,5 @@ Install the dependencies start the server.
 ```sh
 cd NANLP
 npm i
-npm start```
+npm start
+```
