@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const JestPlugin = require("babel-jest");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: "./src/client/index.js",
@@ -23,7 +24,8 @@ module.exports = {
             {
                 template: "./src/client/html/index.html",
                 filename: "./index.html"
-            }
+            },
+            new WorkboxPlugin.GenerateSW()
         ),
     ]
 }

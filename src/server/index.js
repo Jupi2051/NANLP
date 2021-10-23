@@ -12,9 +12,6 @@ app.use(bodyParser());
 app.use(cors());
 const request = require("request");
 
-
-
-
 app.listen(PORT, function()
 {
     console.log("Listening on " + PORT);

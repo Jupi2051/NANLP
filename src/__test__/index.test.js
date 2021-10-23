@@ -1,4 +1,4 @@
-const FormatResponse = require("../client/FormatResponse");
+import FormatResponse from "../client/FormatResponse"
 
 test("Preparing response for the UI", () =>
 {

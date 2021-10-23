@@ -13,5 +13,3 @@ export default function FormatResponse(result)
     Subjectivity: ${result.subjectivity === "OBJECTIVE" ? "Yes" : "No"}<br/>
     Impression: ${PostivityValues[result.score_tag]}`;
 }
-
-module.exports = FormatResponse
