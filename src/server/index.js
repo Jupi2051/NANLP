@@ -35,9 +35,12 @@ app.post("/Evaluate", function(req, MainResponse)
 
     formdata.submit("https://api.meaningcloud.com/sentiment-2.1", function(err, res)
     {
-        res.on("data", (chunk) =>
+        let body = "";
+        res.on("data", (chunk) =>{body += chunk;});
+
+        res.on("end", function()
         {
-            MainResponse.send(new Buffer.from(chunk).toString());
-        });
+            MainResponse.send(new Buffer.from(body).toString());
+        })
     });
 });

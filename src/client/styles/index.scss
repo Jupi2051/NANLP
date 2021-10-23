@@ -38,10 +38,12 @@ body {
         }
     }
 
-    input
+    textarea
     {
+        resize: none;
         width: 100%;
-        padding: 16px;
+        height: 200px;
+        padding: 10px;
         font-size: 1.5em;
         margin: 0 auto;
     }
