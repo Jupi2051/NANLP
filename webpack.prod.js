@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const JestPlugin = require("babel-jest");
 
 module.exports = {
     entry: "./src/client/index.js",

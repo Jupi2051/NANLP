@@ -1,9 +1,23 @@
 import "./styles/index.scss";
-import Evaluate from "./Evaluator";
+import "./FormatResponse";
 
 const TitleContainer = document.getElementById("OutcomeTitle");
 const AnswerContainer = document.getElementById("AnswerContainer");
 const Form = document.getElementById("EvaluationForm");
+
+async function Evaluate(ArticleURL)
+{
+    const response = await fetch("/Evaluate", 
+    {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({article: ArticleURL})
+    });
+    return response;
+}
 
 async function OnEvaluate(event)
 {
@@ -21,29 +35,13 @@ async function OnEvaluate(event)
     if (result.status.msg === "OK")
     {
         TitleContainer.textContent = "Results:";
-        AnswerContainer.innerHTML = FormatData(result)
+        AnswerContainer.innerHTML = FormatResponse(result)
     }
     else
     {
         TitleContainer.textContent = "An Error has Occured";
         AnswerContainer.innerHTML = "Error Contents.";
     }
-}
-
-export default function FormatData(result)
-{
-    let PostivityValues = [];
-    PostivityValues["P+"] = "Very positive",
-    PostivityValues["P"] = "Positive",
-    PostivityValues["NEU"] = "Neutral",
-    PostivityValues["N"] = "Negative",
-    PostivityValues["N+"] = "Very Negative",
-    PostivityValues["NONE"] = "No impressions"
-    return `Agreement: ${result.agreement === "AGREEMENT"? "Yes" : "No"}<br/>
-    Confidence: ${result.confidence}<br/>
-    Irony: ${result.irony === "IRONIC"? "Yes" : "No"}<br/>
-    Subjectivity: ${result.subjectivity === "OBJECTIVE"? "Yes" : "No"}<br/>
-    Impression: ${PostivityValues[result.score_tag]}`;
 }
 
 Form.onsubmit = OnEvaluate;
