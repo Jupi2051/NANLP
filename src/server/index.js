@@ -22,6 +22,11 @@ app.get("/", function(req, res)
     res.sendFile("dist/index.html");
 });
 
+app.get("/service-worker.js", function(req, res)
+{
+    res.sendFile(__dirname + "/service-worker.js");
+});
+
 app.post("/Evaluate", function(req, MainResponse)
 {
     articleURL = req.body.article;
