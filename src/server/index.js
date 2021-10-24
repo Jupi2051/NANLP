@@ -34,6 +34,8 @@ app.post("/Evaluate", function(req, MainResponse)
     formdata.append("key", API_KEY);
     formdata.append("txt", articleURL);
     formdata.append("lang", "en");
+    if (!API_KEY)
+        MainResponse.sendStatus(403) // means API key is missing
 
     formdata.submit("https://api.meaningcloud.com/sentiment-2.1", function(err, res)
     {
