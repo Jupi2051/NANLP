@@ -1,8 +1,9 @@
+const API_KEY = "21cd69ee25f06146a18b8720a492bba5";
+
 const PORT = 25565;
 const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
-const API_KEY = process.env.API_ID;
 const app = express();
 const bodyParser = require('body-parser')
 const cors = require('cors')

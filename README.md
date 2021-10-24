@@ -9,6 +9,9 @@ Clone the Git repository using the following command
 git clone https://github.com/Jupi2051/NANLP.git
 ```
 
+go to `src/server/index.js`
+and insert your API as the value of API_KEY
+
 Install the dependencies start the server.
 ```sh
 cd NANLP
