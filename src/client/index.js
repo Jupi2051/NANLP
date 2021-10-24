@@ -22,26 +22,46 @@ async function Evaluate(ArticleData)
 
 async function OnEvaluate(event)
 {
-    TitleContainer.textContent = "Loading...";
-    AnswerContainer.innerHTML = "";
     event.preventDefault();
-    let result;
-    try {
-        result = await (await Evaluate(TextContainer.value)).json();
-    } catch {
-        TitleContainer.textContent = "Error while trying to request data.";
-        AnswerContainer.innerHTML = "";
-        return;
-    }
-    if (result.status.msg === "OK")
+    let Article = TextContainer.value;
+    let Regex = /\S/
+    let SpacesAtStart = Article.indexOf(Article.trim())
+    console.log(SpacesAtStart);
+    if (Regex.test(Article))
     {
-        TitleContainer.textContent = "Results:";
-        AnswerContainer.innerHTML = FormatResponse(result)
+        if (SpacesAtStart < 4)
+        {
+            TitleContainer.textContent = "Loading...";
+            AnswerContainer.innerHTML = "";
+            let result;
+            try {
+                result = await (await Evaluate(Article)).json();
+            } catch {
+                TitleContainer.textContent = "Error while trying to request data.";
+                AnswerContainer.innerHTML = "";
+                return;
+            }
+            if (result.status.msg === "OK")
+            {
+                TitleContainer.textContent = "Results:";
+                AnswerContainer.innerHTML = FormatResponse(result)
+            }
+            else
+            {
+                TitleContainer.textContent = "Error:";
+                AnswerContainer.innerHTML = result.status.msg;
+            }
+        }
+        else
+        {
+            TitleContainer.textContent = "Error:";
+            AnswerContainer.innerHTML = "Please make sure your text is well formatted and remove space at the beginning.";            
+        }
     }
     else
     {
-        TitleContainer.textContent = "An Error has Occured";
-        AnswerContainer.innerHTML = "Error Contents.";
+        TitleContainer.textContent = "Error:";
+        AnswerContainer.innerHTML = "Please write in a paragraph to be evaluated.";
     }
 }
 
